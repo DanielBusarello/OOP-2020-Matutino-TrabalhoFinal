@@ -4,7 +4,7 @@
 
 Repositório destinado ao desenvolvimento projeto do trabalho final de POO-M.
 
-[Enigmas Raciocínio Lógico](#enigmas_rl)
+[Enigmas Raciocínio Lógico](#enigmas_rl) <br>
 [Enigmas Lógica Proposicional](#enigmas_lprop)
 
 ---
@@ -19,7 +19,7 @@ Imagem publicada nos arquivos do repositório.
 - <h2>Sudoku</h2> O usuário terá que colocar os números em uma matriz **4x4** de forma que o número inserido não se repita nem na linha, nem na coluna em que for inserido.
 - <h2>Padrão de figuras</h2> O usuário terá que identificar o padrão correto da figura baseado em um exemplo apresentado a ele.
 ---
-## <a id="enigmas_rl" /> Enigmas Lógica Proposicional
+## <a id="enigmas_lprop" /> Enigmas Lógica Proposicional
 - <h2>Sudoku</h2>
 - <h2>Sudoku</h2>
 
