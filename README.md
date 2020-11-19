@@ -14,7 +14,7 @@ Imagem publicada nos arquivos do repositório.
 
 ------
 
-# Enigmas Raciocínio Lógico
+## Enigmas Raciocínio Lógico
 - Sudoku
 - Padrão de figuras
 
