@@ -16,8 +16,8 @@ Imagem publicada nos arquivos do repositório.
 ---
 
 ## <a id="enigmas_rl" /> Enigmas Raciocínio Lógico
-- <h2>Sudoku</h2> O usuário terá que colocar os números em uma matriz <b>4x4</b> de forma que o número inserido não se repita nem na linha, nem na coluna em que for inserido. -_Imagem disponível nos arquivos_
-- <h2>Padrão de figuras</h2> O usuário terá que identificar o padrão correto da figura baseado em um exemplo apresentado a ele. _Imagem disponível nos arquivos_
+- <h2>Sudoku</h2> O usuário terá que colocar os números em uma matriz <b>4x4</b> de forma que o número inserido não se repita nem na linha, nem na coluna em que for inserido. <i>Imagem disponível nos arquivos</i>
+- <h2>Padrão de figuras</h2> O usuário terá que identificar o padrão correto da figura baseado em um exemplo apresentado a ele. <i>Imagem disponível nos arquivos</i>
 ---
 ## <a id="enigmas_lprop" /> Enigmas Lógica Proposicional
 - <h2>Sudoku</h2>
