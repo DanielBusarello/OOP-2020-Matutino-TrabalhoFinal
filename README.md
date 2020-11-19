@@ -20,7 +20,7 @@ Imagem publicada nos arquivos do repositório.
 - <h2>Padrão de figuras</h2> O usuário terá que identificar o padrão correto da figura baseado em um exemplo apresentado a ele. <a href="https://github.com/DanielBusarello/POO202-M-05/blob/main/Padr%C3%A3o.png"><i>Clique aqui para visualizar.</i></a>
 ---
 ## <a id="enigmas_lprop" /> Enigmas Lógica Proposicional
-- <h2>Premissas</h2> A partir de algumas premissas, o usuário deverá escolher uma dentre as 5 alternativas (a, b, c, d & e), utilizando a lógica de proposições para encontrar a resposta correta.
+- <h2>Premissas</h2> A partir de algumas premissas, o usuário deverá escolher uma dentre as 5 alternativas (a, b, c, d & e), utilizando a lógica de proposições para encontrar a resposta correta. <a href="https://github.com/DanielBusarello/POO202-M-05/blob/main/Premissas.png"><i>Clique aqui para visualizar.</i></a>
 - <h2>Símbolos Lógicos</h2> O usuário receberá algumas premissas e deverá completar a tabela, preenchendo os espaços em branco com os símbolos corretos.
 
 ---
