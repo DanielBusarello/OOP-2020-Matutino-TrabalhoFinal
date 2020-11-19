@@ -4,8 +4,8 @@
 
 Repositório destinado ao desenvolvimento projeto do trabalho final de POO-M.
 
-[Enigmas Raciocínio Lógico](#enigmas_rl) <br>
-[Enigmas Lógica Proposicional](#enigmas_lprop)
+-*[Enigmas Raciocínio Lógico](#enigmas_rl) <br>
+-*[Enigmas Lógica Proposicional](#enigmas_lprop)
 
 ---
 
