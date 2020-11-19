@@ -4,7 +4,7 @@
 
 Repositório destinado ao desenvolvimento projeto do trabalho final de POO-M.
 
-[Enigmas Raciocínio Lógico](/#enigmas-raciocínio-lógico)
+[Enigmas Raciocínio Lógico](/#enigmas_rl)
 
 ------
 
@@ -14,7 +14,7 @@ Imagem publicada nos arquivos do repositório.
 
 ------
 
-## Enigmas Raciocínio Lógico
+## <a id="enigmas_rl" /> Enigmas Raciocínio Lógico
 - Sudoku
 - Padrão de figuras
 
