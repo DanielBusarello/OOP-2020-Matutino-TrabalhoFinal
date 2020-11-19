@@ -4,7 +4,7 @@
 
 Repositório destinado ao desenvolvimento projeto do trabalho final de POO-M.
 
-[Enigmas Raciocínio Lógico](/README.md/#enigmas-raciocinio-logico)
+[Enigmas Raciocínio Lógico](/#enigmas-raciocinio-logico)
 
 ------
 
