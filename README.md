@@ -16,8 +16,8 @@ Imagem publicada nos arquivos do repositório.
 ---
 
 ## <a id="enigmas_rl" /> Enigmas Raciocínio Lógico
-- <h2>Sudoku</h2> O usuário terá que colocar os números em uma matriz <b>4x4</b> de forma que o número inserido não se repita nem na linha, nem na coluna em que for inserido. <i>Imagem disponível nos arquivos.</i>
-- <h2>Padrão de figuras</h2> O usuário terá que identificar o padrão correto da figura baseado em um exemplo apresentado a ele. <a href="https://github.com/DanielBusarello/POO202-M-05/blob/main/Padr%C3%A3o.png"><i>Imagem disponível nos arquivos.</i></a>
+- <h2>Sudoku</h2> O usuário terá que colocar os números em uma matriz <b>4x4</b> de forma que o número inserido não se repita nem na linha, nem na coluna em que for inserido. <a href="https://github.com/DanielBusarello/POO202-M-05/blob/main/Sudoku.png"><i>Clique aqui para visualizar.</i></a>
+- <h2>Padrão de figuras</h2> O usuário terá que identificar o padrão correto da figura baseado em um exemplo apresentado a ele. <a href="https://github.com/DanielBusarello/POO202-M-05/blob/main/Padr%C3%A3o.png"><i>Clique aqui para visualizar.</i></a>
 ---
 ## <a id="enigmas_lprop" /> Enigmas Lógica Proposicional
 - <h2>Sudoku</h2>
