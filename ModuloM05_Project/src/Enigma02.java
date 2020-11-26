@@ -1,29 +1,21 @@
-import java.awt.EventQueue;
+import java.awt.Color;
+import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JOptionPane;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
 import javax.swing.JTextArea;
-import java.awt.Font;
-import javax.swing.event.ChangeListener;
 import javax.swing.event.ChangeEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
-import java.awt.Color;
+import javax.swing.event.ChangeListener;
 
-/*
- * 
- * @author Daniel Busarello
- *  
- */
+public class Enigma02 extends JPanel {
 
-public class EnigmaLPRO01 extends JFrame {
+	private static final long serialVersionUID = 1L;
 
-	private JFrame frame;
-
-	// Variables
 	private LPRO lPro = new LPRO();
 	
 	private JCheckBox chA;
@@ -41,44 +33,16 @@ public class EnigmaLPRO01 extends JFrame {
 		new JCheckBox("D"),
 		new JCheckBox("E"),
 	};
-		
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					EnigmaLPRO01 window = new EnigmaLPRO01();
-					window.frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
-
-	/**
-	 * Create the application.
-	 */
-	public EnigmaLPRO01() {
-		initialize();
-	}
-
-	/**
-	 * Initialize the contents of the frame.
-	 */
-	private void initialize() {
-		frame = new JFrame();
-		frame.setBounds(200, 200, 450, 300);
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.getContentPane().setLayout(null);
+	
+	public Enigma02() {
+		setLayout(null);
+		setSize(350, 250);
 		
 		JLabel lblStatus = new JLabel("Armado");
 		lblStatus.setFont(new Font("Tahoma", Font.BOLD, 12));
 		lblStatus.setForeground(Color.RED);
-		lblStatus.setBounds(350, 11, 74, 14);
-		frame.getContentPane().add(lblStatus);
+		lblStatus.setBounds(266, 11, 74, 14);
+		this.add(lblStatus);
 		
 		btnVerify.setEnabled(false);
 		btnVerify.addActionListener(new ActionListener() {
@@ -93,8 +57,8 @@ public class EnigmaLPRO01 extends JFrame {
 				}
 			}
 		});
-		btnVerify.setBounds(171, 227, 89, 23);
-		frame.getContentPane().add(btnVerify);
+		btnVerify.setBounds(126, 216, 89, 23);
+		this.add(btnVerify);
 		
 		chA = checkBoxes[0];
 		chA.addChangeListener(new ChangeListener() {
@@ -103,7 +67,7 @@ public class EnigmaLPRO01 extends JFrame {
 			}
 		});
 		chA.setBounds(10, 125, 400, 23);
-		frame.getContentPane().add(chA);
+		this.add(chA);
 		
 		chB = checkBoxes[1];
 		chB.addChangeListener(new ChangeListener() {
@@ -112,7 +76,7 @@ public class EnigmaLPRO01 extends JFrame {
 			}
 		});
 		chB.setBounds(10, 151, 400, 23);
-		frame.getContentPane().add(chB);
+		this.add(chB);
 		
 		chC = checkBoxes[2];
 		chC.addChangeListener(new ChangeListener() {
@@ -121,7 +85,7 @@ public class EnigmaLPRO01 extends JFrame {
 			}
 		});
 		chC.setBounds(10, 177, 400, 23);
-		frame.getContentPane().add(chC);
+		this.add(chC);
 		
 		chD = checkBoxes[3];
 		chD.addChangeListener(new ChangeListener() {
@@ -130,25 +94,25 @@ public class EnigmaLPRO01 extends JFrame {
 			}
 		});
 		chD.setBounds(10, 203, 400, 23);
-		frame.getContentPane().add(chD);
+		this.add(chD);
 		
-		JTextArea txtrIMariaGosta = new JTextArea();
-		txtrIMariaGosta.setBackground(Color.WHITE);
-		txtrIMariaGosta.setLineWrap(true);
-		txtrIMariaGosta.setFont(new Font("Leelawadee UI", Font.PLAIN, 13));
-		txtrIMariaGosta.setText("I. Maria gosta de viol\u00E3o ou Eduardo gosta de guitarra.\r\nII. Brenda gosta de flauta ou Pedro n\u00E3o gosta de piano.\r\nIII. Pedro gosta de piano ou Maria n\u00E3o gosta de viol\u00E3o.\r\nIV. Jo\u00E3o gosta de bateria ou Lara gosta de baixo.");
-		txtrIMariaGosta.setEditable(false);
-		txtrIMariaGosta.setBounds(10, 45, 414, 73);
-		frame.getContentPane().add(txtrIMariaGosta);
+		JTextArea txtArea = new JTextArea();
+		txtArea.setBackground(Color.WHITE);
+		txtArea.setLineWrap(true);
+		txtArea.setFont(new Font("Leelawadee UI", Font.PLAIN, 12));
+		txtArea.setText("I. Maria gosta de viol\u00E3o ou Eduardo gosta de guitarra.\r\nII. Brenda gosta de flauta ou Pedro n\u00E3o gosta de piano.\r\nIII. Pedro gosta de piano ou Maria n\u00E3o gosta de viol\u00E3o.\r\nIV. Jo\u00E3o gosta de bateria ou Lara gosta de baixo.");
+		txtArea.setEditable(false);
+		txtArea.setBounds(10, 45, 330, 73);
+		this.add(txtArea);
 		
 		JLabel lblNewLabel = new JLabel("A partir das premissas, selecione o correto:");
 		lblNewLabel.setFont(new Font("Leelawadee UI", Font.PLAIN, 12));
-		lblNewLabel.setBounds(95, 18, 224, 16);
-		frame.getContentPane().add(lblNewLabel);
+		lblNewLabel.setBounds(23, 18, 224, 16);
+		this.add(lblNewLabel);
 		
 		setCBText(alternatives, checkBoxes);
 	}
-	
+
 	private void disableCB() {
 		if(chA.isSelected()) {
 			chB.setSelected(false);

@@ -1,10 +1,12 @@
+import javax.swing.JPanel;
+
 /*
  * 
  * @author Daniel Busarello
  *  
  */
 
-public abstract class Enigma{
+public abstract class Enigma {
 	private int numWasUsed;
 	private int numDeciphered;
 	private int numErrors;
@@ -14,6 +16,8 @@ public abstract class Enigma{
 	private boolean desarmed = false;
 	private int dificult;
 	private int i = 0;
+	
+	private JPanel panel;
 	
 	public Enigma() {
 		this.wasUser();
@@ -29,12 +33,10 @@ public abstract class Enigma{
 	}
 
 	public boolean checkAnswer(String usrAns) {
-		
 		if(usrAns == answer) {
 			i = this.getDeciphered();
 			i++;
 			this.setNumDeciphered(i);
-			this.desarmed = true;
 			return true;
 		}
 		i = this.getCurrentErrors();
@@ -47,6 +49,13 @@ public abstract class Enigma{
 		i = this.getNumWasUsed();
 		i++;
 		this.setNumWasUsed(i);
+	}
+	
+	public JPanel getPanel() {
+		return this.panel;
+	}
+	public void setPanel(JPanel panel) { 
+		this.panel = panel;
 	}
 	
 	public int getNumWasUsed() {

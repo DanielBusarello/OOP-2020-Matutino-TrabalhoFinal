@@ -1,26 +1,20 @@
 import java.awt.Color;
-import java.awt.EventQueue;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JOptionPane;
-import javax.swing.JButton;
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
 import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
 import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
 import javax.swing.JToggleButton;
-import javax.swing.event.ChangeListener;
 import javax.swing.event.ChangeEvent;
+import javax.swing.event.ChangeListener;
 
-/*
- * 
- * @author Daniel Busarello
- *  
- */
+public class Enigma01 extends JPanel {
 
-public class EnigmaRL02 extends JFrame{
-
-	private JFrame frame;
+	private static final long serialVersionUID = 1L;
+	
 	private JButton btnVerify = new JButton("Verificar");
 	private JToggleButton chA;
 	private JToggleButton chB;
@@ -28,7 +22,6 @@ public class EnigmaRL02 extends JFrame{
 	private JToggleButton chD;
 	private JLabel lblStatus;
 	
-	// Variables
 	private RLOG rLog = new RLOG();
 	
 	ImageIcon ii = new ImageIcon();
@@ -44,32 +37,14 @@ public class EnigmaRL02 extends JFrame{
 		"/img/04S.png"
 	};
 	
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					EnigmaRL02 window = new EnigmaRL02();
-					window.frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
-
-	public EnigmaRL02() {
-		initialize();
-	}
-
-	private void initialize() {
-		frame = new JFrame();
-		frame.setBounds(100, 100, 450, 300);
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+	public Enigma01() {
+		setLayout(null);
+		setSize(350, 250);
 		
 		lblStatus = new JLabel("Armado");
 		lblStatus.setFont(new Font("Tahoma", Font.BOLD, 12));
 		lblStatus.setForeground(Color.RED);
-		lblStatus.setBounds(348, 6, 76, 14);
+		lblStatus.setBounds(265, 6, 76, 14);
 		
 		btnVerify.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		btnVerify.setEnabled(false);
@@ -80,22 +55,19 @@ public class EnigmaRL02 extends JFrame{
 					lblStatus.setText("Desarmado");
 					lblStatus.setForeground(Color.GREEN);
 					btnVerify.setEnabled(false);
-				} else {
-					JOptionPane.showMessageDialog(btnVerify, "Você errou!");
-				}
+				} 
 			}
 		});
-		btnVerify.setBounds(174, 227, 89, 23);
-		frame.getContentPane().setLayout(null);
-		frame.getContentPane().add(lblStatus);
-		frame.getContentPane().add(btnVerify);
+		btnVerify.setBounds(135, 224, 89, 23);
+		this.add(lblStatus);
+		this.add(btnVerify);
 		
 		JLabel lblImg = new JLabel();
-		ii = new ImageIcon(EnigmaRL02.class.getResource(imgName[0]));
-		ii.setImage(ii.getImage().getScaledInstance(400, 130, 60));
+		ii = new ImageIcon(BombTest.class.getResource(imgName[0]));
+		ii.setImage(ii.getImage().getScaledInstance(300, 130, 60));
 		lblImg.setIcon(ii);
-		lblImg.setBounds(20, 31, 392, 126);
-		frame.getContentPane().add(lblImg);
+		lblImg.setBounds(10, 31, 330, 126);
+			add(lblImg);
 		
 		chA = new JToggleButton();
 		chA.addChangeListener(new ChangeListener() {
@@ -103,14 +75,14 @@ public class EnigmaRL02 extends JFrame{
 				disableTB();
 			}
 		});
-		ii = new ImageIcon(EnigmaRL02.class.getResource(imgName[1]));
+		ii = new ImageIcon(BombTest.class.getResource(imgName[1]));
 		ii.setImage(ii.getImage().getScaledInstance(64, 48, 25));
 		chA.setIcon(ii);
-		ii = new ImageIcon(EnigmaRL02.class.getResource(imgName[5]));
+		ii = new ImageIcon(BombTest.class.getResource(imgName[5]));
 		ii.setImage(ii.getImage().getScaledInstance(64, 48, 25));
 		chA.setSelectedIcon((ii));
-		chA.setBounds(85, 168, 52, 50);
-		frame.getContentPane().add(chA);
+		chA.setBounds(36, 168, 52, 50);
+		this.add(chA);
 		
 		chB = new JToggleButton();
 		chB.addChangeListener(new ChangeListener() {
@@ -118,14 +90,14 @@ public class EnigmaRL02 extends JFrame{
 				disableTB();
 			}
 		});
-		ii = new ImageIcon(EnigmaRL02.class.getResource(imgName[2]));
+		ii = new ImageIcon(BombTest.class.getResource(imgName[2]));
 		ii.setImage(ii.getImage().getScaledInstance(64, 48, 25));
 		chB.setIcon(ii);
-		ii = new ImageIcon(EnigmaRL02.class.getResource(imgName[6]));
+		ii = new ImageIcon(BombTest.class.getResource(imgName[6]));
 		ii.setImage(ii.getImage().getScaledInstance(64, 48, 25));
 		chB.setSelectedIcon((ii));
-		chB.setBounds(159, 168, 52, 50);
-		frame.getContentPane().add(chB);
+		chB.setBounds(110, 168, 52, 50);
+		this.add(chB);
 		
 		chC = new JToggleButton();
 		chC.addChangeListener(new ChangeListener() {
@@ -133,14 +105,14 @@ public class EnigmaRL02 extends JFrame{
 				disableTB();
 			}
 		});
-		ii = new ImageIcon(EnigmaRL02.class.getResource(imgName[3]));
+		ii = new ImageIcon(BombTest.class.getResource(imgName[3]));
 		ii.setImage(ii.getImage().getScaledInstance(64, 48, 25));
 		chC.setIcon(ii);
-		ii = new ImageIcon(EnigmaRL02.class.getResource(imgName[7]));
+		ii = new ImageIcon(BombTest.class.getResource(imgName[7]));
 		ii.setImage(ii.getImage().getScaledInstance(64, 48, 25));
 		chC.setSelectedIcon((ii));
-		chC.setBounds(235, 168, 52, 50);
-		frame.getContentPane().add(chC);
+		chC.setBounds(186, 168, 52, 50);
+		this.add(chC);
 		
 		chD = new JToggleButton();
 		chD.addChangeListener(new ChangeListener() {
@@ -148,14 +120,14 @@ public class EnigmaRL02 extends JFrame{
 				disableTB();
 			}
 		});
-		ii = new ImageIcon(EnigmaRL02.class.getResource(imgName[4]));
+		ii = new ImageIcon(BombTest.class.getResource(imgName[4]));
 		ii.setImage(ii.getImage().getScaledInstance(64, 48, 25));
 		chD.setIcon(ii);
-		ii = new ImageIcon(EnigmaRL02.class.getResource(imgName[8]));
+		ii = new ImageIcon(BombTest.class.getResource(imgName[8]));
 		ii.setImage(ii.getImage().getScaledInstance(64, 48, 25));
 		chD.setSelectedIcon((ii));
-		chD.setBounds(312, 168, 52, 50);
-		frame.getContentPane().add(chD);
+		chD.setBounds(263, 168, 52, 50);
+		this.add(chD);
 	}
 	
 	private void disableTB(){
@@ -185,4 +157,5 @@ public class EnigmaRL02 extends JFrame{
 			btnVerify.setEnabled(false);
 		}
 	}
+
 }

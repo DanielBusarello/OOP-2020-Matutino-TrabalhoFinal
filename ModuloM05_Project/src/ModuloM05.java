@@ -1,7 +1,5 @@
 import java.util.ArrayList;
-import java.util.Random;
-
-import javax.swing.JFrame;
+import javax.swing.JPanel;
 
 /*
  * 
@@ -9,59 +7,63 @@ import javax.swing.JFrame;
  *  
  */
 
-public class ModuloM05 {
-	private int numberExec;
-	private int numberActiv; 
-	private int rightAnswers;
-	private int wrongAnswers;
-	private boolean defused;
-	
-	private EnigmaRL02 enigmaRL = new EnigmaRL02();
-	private EnigmaLPRO01 enigmaLPro = new EnigmaLPRO01();
-	
-	private ArrayList<JFrame> enigmas = new ArrayList<JFrame>();
-	Random r = new Random();
+public class ModuloM05 implements ModuleInterface{
+	private ArrayList<JPanel> enigmas = new ArrayList<JPanel>();
+	//private BombInterface bomb;
 	
 	public ModuloM05() {
-		enigmas.add(this.enigmaRL);
-		enigmas.add(this.enigmaLPro);
+		enigmas.add(new Enigma01());
+		enigmas.add(new Enigma02());
 	}
 	
-	public JFrame getEnigma() {
-		return enigmas.get(r.nextInt(2));
+	@Override
+	public void attach(BombInterface arg0) {
+		
 	}
-	
-	public int getNumberExec() {
-		return numberExec;
+
+	@Override
+	public EnigmaLevel getEnigmaLevel(byte arg0) {
+		
+		return null;
 	}
-	public void setNumberExec(int numberExec) {
-		this.numberExec = numberExec;
+
+	@Override
+	public int getHowManyActivations() {
+		// TODO Auto-generated method stub
+		return 0;
 	}
-	public int getNumberActiv() {
-		return numberActiv;
+
+	@Override
+	public int getHowManyExecutions(byte arg0) {
+		// TODO Auto-generated method stub
+		return 0;
 	}
-	public void setNumberActiv(int numberActiv) {
-		this.numberActiv = numberActiv;
+
+	@Override
+	public int getHowManyRightAnswers(byte arg0) {
+		// TODO Auto-generated method stub
+		return 0;
 	}
-	public int getRightAnswers() {
-		return rightAnswers;
+
+	@Override
+	public int getHowManyWrongAnswers(byte arg0) {
+		// TODO Auto-generated method stub
+		return 0;
 	}
-	public void setRightAnswers(int rightAnswers) {
-		this.rightAnswers = rightAnswers;
+
+	@Override
+	public JPanel getPanel(byte arg0) {
+		if(arg0 < 3) {
+			return enigmas.get(0);
+		} else 
+			return enigmas.get(1);
+		
 	}
-	public int getWrongAnswers() {
-		return wrongAnswers;
-	}
-	public void setWrongAnswers(int wrongAnswers) {
-		this.wrongAnswers = wrongAnswers;
-	}
+
+	@Override
 	public boolean isDefused() {
-		return defused;
-	}
-	public void setDefused(boolean defused) {
-		this.defused = defused;
-	}
-	
-	
+		// TODO Auto-generated method stub
+		return false;
+	}	
 }
 
