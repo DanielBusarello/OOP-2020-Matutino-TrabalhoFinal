@@ -1,9 +1,35 @@
+import java.util.ArrayList;
+import java.util.Random;
+
+import javax.swing.JFrame;
+
+/*
+ * 
+ * @author Daniel Busarello
+ *  
+ */
+
 public class ModuloM05 {
 	private int numberExec;
 	private int numberActiv; 
 	private int rightAnswers;
 	private int wrongAnswers;
 	private boolean defused;
+	
+	private EnigmaRL02 enigmaRL = new EnigmaRL02();
+	private EnigmaLPRO01 enigmaLPro = new EnigmaLPRO01();
+	
+	private ArrayList<JFrame> enigmas = new ArrayList<JFrame>();
+	Random r = new Random();
+	
+	public ModuloM05() {
+		enigmas.add(this.enigmaRL);
+		enigmas.add(this.enigmaLPro);
+	}
+	
+	public JFrame getEnigma() {
+		return enigmas.get(r.nextInt(2));
+	}
 	
 	public int getNumberExec() {
 		return numberExec;
@@ -38,3 +64,4 @@ public class ModuloM05 {
 	
 	
 }
+

@@ -13,7 +13,13 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.Color;
 
-public class EnigmaLPRO01 {
+/*
+ * 
+ * @author Daniel Busarello
+ *  
+ */
+
+public class EnigmaLPRO01 extends JFrame {
 
 	private JFrame frame;
 

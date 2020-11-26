@@ -1,3 +1,9 @@
+/*
+ * 
+ * @author Daniel Busarello
+ *  
+ */
+
 public class LPRO extends Enigma{
 	private String[] alternatives = {
 		"se Maria gosta de violão, então Eduardo gosta de guitarra.",

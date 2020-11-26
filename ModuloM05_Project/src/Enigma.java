@@ -1,3 +1,9 @@
+/*
+ * 
+ * @author Daniel Busarello
+ *  
+ */
+
 public abstract class Enigma{
 	private int numWasUsed;
 	private int numDeciphered;

@@ -12,7 +12,13 @@ import javax.swing.JToggleButton;
 import javax.swing.event.ChangeListener;
 import javax.swing.event.ChangeEvent;
 
-public class EnigmaRL02 {
+/*
+ * 
+ * @author Daniel Busarello
+ *  
+ */
+
+public class EnigmaRL02 extends JFrame{
 
 	private JFrame frame;
 	private JButton btnVerify = new JButton("Verificar");
