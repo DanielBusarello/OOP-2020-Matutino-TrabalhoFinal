@@ -4,7 +4,7 @@ public class RLOG extends Enigma{
 	}
 	
 	public RLOG() {
-		super.setAnswer("A");
+		super.setAnswer("D");
 		super.setDificult(1);
 	}
 	
