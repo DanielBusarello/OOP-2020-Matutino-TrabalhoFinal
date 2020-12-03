@@ -14,146 +14,140 @@ import javax.swing.event.ChangeListener;
 public class Enigma01 extends JPanel {
 
 	private static final long serialVersionUID = 1L;
-	
+
 	private JButton btnVerify = new JButton("Verificar");
 	private JToggleButton chA;
 	private JToggleButton chB;
 	private JToggleButton chC;
 	private JToggleButton chD;
 	private JLabel lblStatus;
-	
+
 	private RLOG rLog = new RLOG();
-	
+
 	ImageIcon ii = new ImageIcon();
-	private String[] imgName = {
-		"/img/imgIntro.png",
-		"/img/01.png",
-		"/img/02.png",
-		"/img/03.png",
-		"/img/04.png",
-		"/img/01S.png",
-		"/img/02S.png",
-		"/img/03S.png",
-		"/img/04S.png"
-	};
-	
+	private String[] imgName = { "/img/imgIntro.png", "/img/01.png", "/img/02.png", "/img/03.png", "/img/04.png",
+			"/img/01S.png", "/img/02S.png", "/img/03S.png", "/img/04S.png" };
+
 	public Enigma01() {
 		setLayout(null);
 		setSize(350, 250);
-		
+
 		lblStatus = new JLabel("Armado");
 		lblStatus.setFont(new Font("Tahoma", Font.BOLD, 12));
 		lblStatus.setForeground(Color.RED);
 		lblStatus.setBounds(265, 6, 76, 14);
-		
+
 		btnVerify.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		btnVerify.setEnabled(false);
 		btnVerify.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				if(chD.isSelected()) {
+				if (chD.isSelected()) {
 					rLog.checkAnswer("D");
 					lblStatus.setText("Desarmado");
 					lblStatus.setForeground(Color.GREEN);
 					btnVerify.setEnabled(false);
-				} 
+				} else {
+					rLog.checkAnswer("");
+				}
 			}
 		});
-		btnVerify.setBounds(135, 224, 89, 23);
+		btnVerify.setBounds(135, 190, 89, 23);
 		this.add(lblStatus);
 		this.add(btnVerify);
-		
+
 		JLabel lblImg = new JLabel();
-		ii = new ImageIcon(BombTest.class.getResource(imgName[0]));
-		ii.setImage(ii.getImage().getScaledInstance(300, 130, 60));
+		ii = new ImageIcon(Enigma01.class.getResource(imgName[0]));
+		ii.setImage(ii.getImage().getScaledInstance(300, 120, 60));
 		lblImg.setIcon(ii);
-		lblImg.setBounds(10, 31, 330, 126);
-			add(lblImg);
-		
+		lblImg.setBounds(10, 25, 330, 110);
+		add(lblImg);
+
 		chA = new JToggleButton();
 		chA.addChangeListener(new ChangeListener() {
 			public void stateChanged(ChangeEvent arg0) {
 				disableTB();
 			}
 		});
-		ii = new ImageIcon(BombTest.class.getResource(imgName[1]));
-		ii.setImage(ii.getImage().getScaledInstance(64, 48, 25));
+		ii = new ImageIcon(Enigma01.class.getResource(imgName[1]));
+		ii.setImage(ii.getImage().getScaledInstance(62, 45, 25));
 		chA.setIcon(ii);
-		ii = new ImageIcon(BombTest.class.getResource(imgName[5]));
-		ii.setImage(ii.getImage().getScaledInstance(64, 48, 25));
+		ii = new ImageIcon(Enigma01.class.getResource(imgName[5]));
+		ii.setImage(ii.getImage().getScaledInstance(62, 45, 25));
 		chA.setSelectedIcon((ii));
-		chA.setBounds(36, 168, 52, 50);
+		chA.setBounds(40, 140, 46, 46);
 		this.add(chA);
-		
+
 		chB = new JToggleButton();
 		chB.addChangeListener(new ChangeListener() {
 			public void stateChanged(ChangeEvent arg0) {
 				disableTB();
 			}
 		});
-		ii = new ImageIcon(BombTest.class.getResource(imgName[2]));
-		ii.setImage(ii.getImage().getScaledInstance(64, 48, 25));
+		ii = new ImageIcon(Enigma01.class.getResource(imgName[2]));
+		ii.setImage(ii.getImage().getScaledInstance(62, 45, 25));
 		chB.setIcon(ii);
-		ii = new ImageIcon(BombTest.class.getResource(imgName[6]));
-		ii.setImage(ii.getImage().getScaledInstance(64, 48, 25));
+		ii = new ImageIcon(Enigma01.class.getResource(imgName[6]));
+		ii.setImage(ii.getImage().getScaledInstance(62, 45, 25));
 		chB.setSelectedIcon((ii));
-		chB.setBounds(110, 168, 52, 50);
+		chB.setBounds(110, 140, 46, 46);
 		this.add(chB);
-		
+
 		chC = new JToggleButton();
 		chC.addChangeListener(new ChangeListener() {
 			public void stateChanged(ChangeEvent arg0) {
 				disableTB();
 			}
 		});
-		ii = new ImageIcon(BombTest.class.getResource(imgName[3]));
-		ii.setImage(ii.getImage().getScaledInstance(64, 48, 25));
+		ii = new ImageIcon(Enigma01.class.getResource(imgName[3]));
+		ii.setImage(ii.getImage().getScaledInstance(62, 45, 25));
 		chC.setIcon(ii);
-		ii = new ImageIcon(BombTest.class.getResource(imgName[7]));
-		ii.setImage(ii.getImage().getScaledInstance(64, 48, 25));
+		ii = new ImageIcon(Enigma01.class.getResource(imgName[7]));
+		ii.setImage(ii.getImage().getScaledInstance(62, 45, 25));
 		chC.setSelectedIcon((ii));
-		chC.setBounds(186, 168, 52, 50);
+		chC.setBounds(180, 140, 46, 46);
 		this.add(chC);
-		
+
 		chD = new JToggleButton();
 		chD.addChangeListener(new ChangeListener() {
 			public void stateChanged(ChangeEvent arg0) {
 				disableTB();
 			}
 		});
-		ii = new ImageIcon(BombTest.class.getResource(imgName[4]));
-		ii.setImage(ii.getImage().getScaledInstance(64, 48, 25));
+		ii = new ImageIcon(Enigma01.class.getResource(imgName[4]));
+		ii.setImage(ii.getImage().getScaledInstance(62, 45, 25));
 		chD.setIcon(ii);
-		ii = new ImageIcon(BombTest.class.getResource(imgName[8]));
-		ii.setImage(ii.getImage().getScaledInstance(64, 48, 25));
+		ii = new ImageIcon(Enigma01.class.getResource(imgName[8]));
+		ii.setImage(ii.getImage().getScaledInstance(62, 45, 25));
 		chD.setSelectedIcon((ii));
-		chD.setBounds(263, 168, 52, 50);
+		chD.setBounds(250, 140, 46, 46);
 		this.add(chD);
+
 	}
-	
-	private void disableTB(){
-		if(chA.isSelected()) {
+
+	private void disableTB() {
+		if (chA.isSelected()) {
 			chB.setSelected(false);
 			chC.setSelected(false);
 			chD.setSelected(false);
-		} else if(chB.isSelected()) {
+		} else if (chB.isSelected()) {
 			chA.setSelected(false);
 			chC.setSelected(false);
 			chD.setSelected(false);
-		} else if(chC.isSelected()) {
+		} else if (chC.isSelected()) {
 			chA.setSelected(false);
 			chB.setSelected(false);
 			chD.setSelected(false);
-		} else if(chD.isSelected()) {
+		} else if (chD.isSelected()) {
 			chA.setSelected(false);
 			chB.setSelected(false);
 			chC.setSelected(false);
-		} else {  
+		} else {
 			btnVerify.setEnabled(false);
 			return;
 		}
 		btnVerify.setEnabled(true);
-		
-		if(rLog.isDesarmed()) {
+
+		if (rLog.isDesarmed()) {
 			btnVerify.setEnabled(false);
 		}
 	}
