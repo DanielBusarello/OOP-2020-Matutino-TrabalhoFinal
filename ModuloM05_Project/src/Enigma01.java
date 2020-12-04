@@ -11,6 +11,12 @@ import javax.swing.JToggleButton;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 
+/*
+ * 
+ * @author Daniel Busarello
+ *  
+ */
+
 public class Enigma01 extends JPanel {
 
 	private static final long serialVersionUID = 1L;
@@ -28,7 +34,7 @@ public class Enigma01 extends JPanel {
 	private String[] imgName = { "/img/imgIntro.png", "/img/01.png", "/img/02.png", "/img/03.png", "/img/04.png",
 			"/img/01S.png", "/img/02S.png", "/img/03S.png", "/img/04S.png" };
 
-	public Enigma01() {
+	public Enigma01(final ModuloM05 m) {
 		setLayout(null);
 		setSize(350, 250);
 
@@ -46,8 +52,15 @@ public class Enigma01 extends JPanel {
 					lblStatus.setText("Desarmado");
 					lblStatus.setForeground(Color.GREEN);
 					btnVerify.setEnabled(false);
+					m.setDefused(true, (byte) 0);
+					m.setRightAnswer();
+					m.serialize();
 				} else {
 					rLog.checkAnswer("");
+					m.setDefused(false, (byte) 0);
+					m.addError();
+					m.setErrors();
+					m.serialize();
 				}
 			}
 		});
@@ -147,7 +160,7 @@ public class Enigma01 extends JPanel {
 		}
 		btnVerify.setEnabled(true);
 
-		if (rLog.isDesarmed()) {
+		if (rLog.getDesarmed()) {
 			btnVerify.setEnabled(false);
 		}
 	}

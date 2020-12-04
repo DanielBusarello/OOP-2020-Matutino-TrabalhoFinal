@@ -10,30 +10,24 @@ import javax.swing.JPanel;
 public abstract class Enigma extends JPanel implements Serializable {
 	private static final long serialVersionUID = 1L;
 
-	private int numWasUsed;
-	private int numDeciphered;
-	private int numErrors;
+	private int numWasUsed = 0;
+	private int numDeciphered = 0;
+	private int numErrors = 0;
 	private String answer;
 	
-	private int currentErrors;
 	private boolean desarmed = false;
-	private int i = 0;
+	
+	protected ModuloM05 m;
 
-	private ModuloM05 m;
-
+	public Enigma(final ModuloM05 m) {
+		this.m = m;
+	}
+	
 	public Enigma() {
-		this.wasUsed();
+		m = ModuloM05.instance;
 	}
 
 	public abstract JPanel getPanel();
-	
-	public Enigma(int nwu, int nd, int ne, String ans) {
-		this.setNumWasUsed(nwu);
-		this.setNumDeciphered(nd);
-		this.setNumErrors(ne);
-		this.setAnswer(ans);
-		this.wasUsed();
-	}
 	
 	public void attach() {
         this.m = ModuloM05.instance;
@@ -41,25 +35,16 @@ public abstract class Enigma extends JPanel implements Serializable {
 	
 	public boolean checkAnswer(String usrAns) {
 		if (usrAns == answer) {
-			i = this.getDeciphered();
-			i++;
-			this.setNumDeciphered(i);
-			System.out.println("Deciphered: " + this.getDeciphered());
+			this.numDeciphered++;
 			this.desarmed = true;
 			return true;
 		}
-		i = this.getCurrentErrors();
-		i++;
-		this.setCurrentErrors(i);
-		System.out.println("Errors: " + this.getNumErrors());
-		m.addError();
+		numErrors++;
 		return false;
 	}
 
 	public void wasUsed() {
-		i = this.getNumWasUsed();
-		i++;
-		this.setNumWasUsed(i);
+		this.numWasUsed++;
 	}
 
 	public int getNumWasUsed() {
@@ -71,13 +56,13 @@ public abstract class Enigma extends JPanel implements Serializable {
 	}
 
 	public int getDeciphered() {
-		return numDeciphered;
+		return this.numDeciphered;
 	}
 
 	public void setNumDeciphered(int deciphered) {
 		numDeciphered = deciphered;
 	}
-
+	
 	public int getNumErrors() {
 		return numErrors;
 	}
@@ -94,23 +79,14 @@ public abstract class Enigma extends JPanel implements Serializable {
 		this.answer = answer;
 	}
 
-	public boolean isDesarmed() {
-		if (this.desarmed == true) {
+	public void isDesarmed(boolean b) {
+		this.desarmed = b;
+	}
+	
+	public boolean getDesarmed() {
+		if(this.desarmed) {
 			return true;
-		}
-		return false;
+		} else 
+			return false;
 	}
-
-	public int getCurrentErrors() {
-		return currentErrors;
-	}
-
-	public void setCurrentErrors(int currentErrors) {
-		this.currentErrors = currentErrors;
-		// Add error to total errors' historic
-		i = this.getNumErrors();
-		i++;
-		this.setNumErrors(i);
-	}
-			
 }

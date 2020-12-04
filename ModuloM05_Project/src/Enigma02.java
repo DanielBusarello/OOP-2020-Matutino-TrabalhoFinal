@@ -11,6 +11,12 @@ import javax.swing.JTextArea;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 
+/*
+ * 
+ * @author Daniel Busarello
+ *  
+ */
+
 public class Enigma02 extends JPanel {
 
 	private static final long serialVersionUID = 1L;
@@ -28,7 +34,7 @@ public class Enigma02 extends JPanel {
 	private JCheckBox[] checkBoxes = { new JCheckBox("A"), new JCheckBox("B"), new JCheckBox("C"), new JCheckBox("D"),
 			new JCheckBox("E"), };
 
-	public Enigma02() {
+	public Enigma02(final ModuloM05 m) {
 		setLayout(null);
 		setSize(350, 250);
 
@@ -46,8 +52,15 @@ public class Enigma02 extends JPanel {
 					lblStatus.setText("Desarmado");
 					lblStatus.setForeground(Color.GREEN);
 					btnVerify.setEnabled(false);
+					m.setDefused(true, (byte) 3);
+					m.setRightAnswer();
+					m.serialize();
 				} else {
 					lPro.checkAnswer("");
+					m.setDefused(false, (byte) 3);
+					m.addError();
+					m.setErrors();
+					m.serialize();
 				}
 			}
 		});
@@ -135,7 +148,7 @@ public class Enigma02 extends JPanel {
 		}
 		btnVerify.setEnabled(true);
 
-		if (lPro.isDesarmed()) {
+		if (lPro.getDesarmed()) {
 			btnVerify.setEnabled(false);
 		}
 	}

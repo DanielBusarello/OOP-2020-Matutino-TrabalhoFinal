@@ -14,10 +14,11 @@ public class LPRO extends Enigma {
 			"se Brenda não gosta de flauta, então Pedro gosta de piano.",
 			"se Maria não gosta de violão, então Brenda gosta de flauta." };
 
-	public LPRO(int nwu, int nd, int ne, String ans) {
-		super(nwu, nd, ne, ans);
+	public LPRO(final ModuloM05 m) {
+		super(m);
+		super.setAnswer("A");
 	}
-
+	
 	public LPRO() {
 		super.setAnswer("A");
 	}
@@ -28,6 +29,7 @@ public class LPRO extends Enigma {
 
 	@Override
 	public JPanel getPanel() {
-		return new Enigma02();
+		return new Enigma02(super.m);
 	}
 }
+

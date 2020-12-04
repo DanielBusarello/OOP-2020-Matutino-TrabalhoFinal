@@ -12,47 +12,65 @@ public class ModuloM05 implements ModuleInterface, Serializable {
 	private static final long serialVersionUID = 1L;
 	
 	private ArrayList<Enigma> enigmasList = new ArrayList<Enigma>();
-	private int enigmaIndex = 0;
-	private boolean defused;
-	private int activations;
+	Enigma e;
+	private int enigmaIndex;
+	private int activations = 0;
+	private boolean defused = false;
 	
 	public static ModuloM05 instance;
 
 	String fileName = ".\\ModuloM05.ser";
 	
-	private BombInterface bomb;
+	transient BombInterface bomb;
 		
 	public ModuloM05() {
-		this.enigmasList.add(new RLOG());
-		this.enigmasList.add(new LPRO());
+		this.enigmasList.add(new RLOG(this));
+		this.enigmasList.add(new LPRO(this));
+	}
+	
+	public void inicialize(byte i) {
+		enigmaIndex = setEnigmaIndex(i);
 		deserialize();
 		this.activations++;
+		serialize();
 	}
 	
 	public void addError() {
 		this.bomb.addError();
 	}
 	
+	public void serialize() {
+		try {
+			File file = new File(fileName);
+			file.delete();
+			file.createNewFile();
+			ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream(file));
+			
+			out.writeObject(this);
+            out.close(); 
+            
+        } catch(IOException ex) {
+			System.out.println("IOException is caught");
+			ex.printStackTrace();
+		}
+	}
+	
 	public void deserialize() {
 		try
         {   
-			FileInputStream file = new FileInputStream(fileName); 
-            ObjectInputStream in = new ObjectInputStream(file); 
-            
-            ModuloM05 m;
-            m = (ModuloM05) in.readObject(); 
-              
-            in.close(); 
-            file.close();
-            
-            this.setActivation(m.getActivations());
-            
-            for(int i = 0; i < enigmasList.size(); i++) {
-            	enigmasList.get(i).setNumDeciphered(m.enigmasList.get(i).getDeciphered());
-            	enigmasList.get(i).setNumErrors(m.enigmasList.get(i).getNumErrors());
-            	enigmasList.get(i).setNumWasUsed(m.enigmasList.get(i).getNumWasUsed());
-            }
-              
+			File file = new File(fileName);
+			if(file.exists()) {
+				ObjectInputStream in = new ObjectInputStream(new FileInputStream(file));
+				ModuloM05 m = (ModuloM05) in.readObject(); 
+				this.activations = m.activations;
+				
+				this.enigmasList.get(enigmaIndex).setNumWasUsed(m.enigmasList.get(enigmaIndex).getNumWasUsed());
+				this.enigmasList.get(enigmaIndex).setNumDeciphered(m.enigmasList.get(enigmaIndex).getDeciphered());
+				this.enigmasList.get(enigmaIndex).setNumErrors(m.enigmasList.get(enigmaIndex).getNumErrors());
+				
+				in.close(); 
+			}
+			
         } catch(IOException ex) { 
             System.out.println("IOException is caught"); 
             ex.printStackTrace();
@@ -61,21 +79,6 @@ public class ModuloM05 implements ModuleInterface, Serializable {
         } 
 	}
 	
-	public void serialize() {
-		try {
-			FileOutputStream file = new FileOutputStream(fileName);
-			ObjectOutputStream out = new ObjectOutputStream(file);
-			
-			out.writeObject(this); 
-            
-            out.close(); 
-            file.close();
-            System.out.println("Gravação completa");
-		} catch(IOException ex) {
-			System.out.println("IOException is caught");
-			ex.printStackTrace();
-		}
-	}
 	
 	private int setEnigmaIndex(byte arg0) {
 		if (arg0 < 3) {
@@ -83,22 +86,14 @@ public class ModuloM05 implements ModuleInterface, Serializable {
 		} else
 			return 1;
 	}
-
-	private void setActivation(int a) {
-		this.activations = a;
-	}
-	
-	public int getActivations() {
-		return this.activations;
-	}
 	
 	public BombInterface getBomb() {
 		return this.bomb;
 	}
 	
 	@Override
-	public void attach(final BombInterface bomb) {
-		this.bomb = bomb;
+	public void attach(final BombInterface arg0) {
+		this.bomb = arg0;
 	}
 
 	@Override
@@ -112,42 +107,58 @@ public class ModuloM05 implements ModuleInterface, Serializable {
 
 	@Override
 	public int getHowManyActivations() {
-		return this.getActivations();
+		deserialize();
+		return this.activations;
 	}
 
 	@Override
 	public int getHowManyExecutions(byte arg0) {
-		this.enigmaIndex = setEnigmaIndex(arg0);
-		return this.enigmasList.get(enigmaIndex).getNumWasUsed();
+		deserialize();
+		return this.enigmasList.get(enigmaIndex).getNumWasUsed(); 
 	}
 
 	@Override
 	public int getHowManyRightAnswers(byte arg0) {
-		this.enigmaIndex = setEnigmaIndex(arg0);
+		deserialize();
 		return this.enigmasList.get(enigmaIndex).getDeciphered();
-		//return 0;
 	}
 
 	@Override
 	public int getHowManyWrongAnswers(byte arg0) {
-		this.enigmaIndex = setEnigmaIndex(arg0);
+		deserialize();
 		return this.enigmasList.get(enigmaIndex).getNumErrors();
 	}
 
 	@Override
 	public JPanel getPanel(byte arg0) {
+		inicialize(arg0);
 		this.enigmaIndex = this.setEnigmaIndex(arg0);
+		this.enigmasList.get(enigmaIndex).wasUsed();
+		serialize();
 		return this.enigmasList.get(enigmaIndex).getPanel();
 	}
 
 	@Override
 	public boolean isDefused() {
-		if(this.enigmasList.get(enigmaIndex).isDesarmed()) {
-			this.defused = true;
-		}
-		else
-			this.defused = false;
-		serialize();
 		return this.defused;
 	}
+	
+	public void setDefused(boolean b, byte arg0) {
+		enigmaIndex = this.setEnigmaIndex(arg0);
+		this.e = this.enigmasList.get(enigmaIndex);
+		this.defused = b;
+	}
+	
+	public void setRightAnswer() {
+		int i = this.e.getDeciphered();
+		i++;
+		this.e.setNumDeciphered(i);
+	}
+	
+	public void setErrors() {
+		int i = this.e.getNumErrors();
+		i++;
+		this.e.setNumErrors(i);
+	}
+	
 }
