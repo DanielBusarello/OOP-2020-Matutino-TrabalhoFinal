@@ -2,7 +2,7 @@
 
 # POO202-M-05
 
-Repositório destinado ao desenvolvimento projeto do trabalho final de POO-M.
+Repositório destinado ao desenvolvimento projeto do trabalho final de Programação Orientada a Objetos do curso Ciências da Computação - FURB, Blumenau.
 
 - [Enigmas Raciocínio Lógico](#enigmas_rl) <br>
 - [Enigmas Lógica Proposicional](#enigmas_lprop)
